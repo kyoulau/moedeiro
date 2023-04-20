@@ -16,6 +16,17 @@ cedula_quantidade_50 = 0
 pagamento = 0
 quantidade_coca = 40
 
+contador_moeda_quantidade_005 = 0
+contador_moeda_quantidade_10 = 0
+contador_moeda_quantidade_25 = 0
+contador_moeda_quantidade_50 = 0
+contador_moeda_quantidade_1 = 0
+contador_cedula_quantidade_2 = 0
+contador_cedula_quantidade_5 = 0
+contador_cedula_quantidade_10 = 0
+contador_cedula_quantidade_20 = 0
+contador_cedula_quantidade_50 = 0
+
 print("================================================================================================================")
 print("                                       Máquina de Refrigerante                                                  ")
 print("================================================================================================================")
@@ -77,55 +88,73 @@ while usuario != "0":
                 print("========== Pagamento Cédulas ==========")
                 cedulas = float(input("1 - R$ 2,00 \n2 - R$ 5,00 \n3 - R$ 10,00 \n4 - R$ 20,00 \n5 - R$ 50,00 \n6 - Pagamento em Moedas\n Selecione a opção do valor da cédula que você deseja inserir: "))
                 if cedulas == 1:
-                    cedula_quantidade_2= cedula_quantidade_2+ 1
+                    contador_cedula_quantidade_2 += 1
+                    cedula_quantidade_2 += contador_cedula_quantidade_2
                     pagamento = pagamento + 2
                 elif cedulas == 2:
-                    cedula_quantidade_5= cedula_quantidade_5+ 1
+                    contador_cedula_quantidade_5 += 1
+                    cedula_quantidade_5 += contador_cedula_quantidade_5
                     pagamento = pagamento + 5
                 elif cedulas == 3:
-                    cedula_quantidade_10 = cedula_quantidade_10 + 1
+                    contador_cedula_quantidade_10 += 1
+                    cedula_quantidade_10 += contador_cedula_quantidade_10
                     pagamento = pagamento + 10
                 elif cedulas == 4:
-                    cedula_quantidade_20= cedula_quantidade_20+ 1
+                    contador_cedula_quantidade_20+= 1
+                    cedula_quantidade_20 += contador_cedula_quantidade_20
                     pagamento = pagamento + 20
                 elif cedulas == 5:
-                    cedula_quantidade_50 = cedula_quantidade_50 + 1
+                    contador_cedula_quantidade_50 += 1
+                    cedula_quantidade_50 += contador_cedula_quantidade_50
                     pagamento = pagamento + 50
                     
                 elif cedulas == 6:
                     break
                 else:
                     print("Digite apenas as opções existentes.")
-                    #vizualização de dados
-                print("2=", cedula_quantidade_2 , "5=", cedula_quantidade_5, "10=", cedula_quantidade_10, "20=", cedula_quantidade_20 , "50=", cedula_quantidade_50)
 
             while moedas != "0":
                 print("========== Pagamento Moedas ==========")
                 moedas = float(input(
                     "1 - 0.05 centavos\n2 - 0.10 centavos\n3 - 0.25 centavos\n4 - 0.50 centavos \n5 - 1.0 real\n6 - finalizar compra\nDigite o tipo de moeda que deseja inserir:"))
                 if moedas == 1:
-                    moeda_quantidade_005 = moeda_quantidade_005 + 1
+                    moeda_quantidade_005 += 1
+                    moeda_quantidade_005+=contador_moeda_quantidade_005
                     pagamento = pagamento + 0.05
+
                 elif moedas == 2:
-                    moeda_quantidade_10 = moeda_quantidade_10 + 1
+                    moeda_quantidade_10 += 1
+                    moeda_quantidade_10+=contador_moeda_quantidade_10
                     pagamento = pagamento + 0.10
                 elif moedas == 3:
-                    moeda_quantidade_25 = moeda_quantidade_25 + 1
+                    moeda_quantidade_25 += 1
+                    moeda_quantidade_25+=contador_moeda_quantidade_25
                     pagamento = pagamento + 0.25
                 elif moedas == 4:
-                    moeda_quantidade_50 = moeda_quantidade_50 + 1
+                    moeda_quantidade_50 += 1
+                    moeda_quantidade_50+=contador_moeda_quantidade_50
                     pagamento = pagamento + 0.50
                 elif moedas == 5:
-                    moeda_quantidade_1 = moeda_quantidade_1 + 1
+                    moeda_quantidade_1 += 1
+                    moeda_quantidade_1+=contador_moeda_quantidade_1
                     pagamento = pagamento + 1.0
                 elif moedas == 6:
                     break
                 else:
                     print("Digite apenas as opções existentes.")
-                print("0.5=", moeda_quantidade_005, "0.10=", moeda_quantidade_10, "0.25=", moeda_quantidade_25, "0.50=", moeda_quantidade_50, "1=", moeda_quantidade_1)
         if pagamento < 6:
-            print("Pagamento Indefirido, faltam", (6 - pagamento), "reais\nDevolver dinheiro")
-            #PERCISAMOS DEVOLVER O DINHEIRO NA PRÁTICA
+            print("Pagamento Indefinido, faltam", (6 - pagamento), "reais\nDevolver dinheiro")
+            cedula_quantidade_2-=contador_cedula_quantidade_2
+            cedula_quantidade_5-=contador_cedula_quantidade_5
+            cedula_quantidade_10-=contador_cedula_quantidade_10
+            cedula_quantidade_20-=contador_cedula_quantidade_20
+            cedula_quantidade_50-=contador_cedula_quantidade_50
+            moeda_quantidade_005-=contador_moeda_quantidade_005
+            moeda_quantidade_10-=contador_moeda_quantidade_10
+            moeda_quantidade_25-=contador_moeda_quantidade_25
+            moeda_quantidade_50-=contador_moeda_quantidade_50
+            moeda_quantidade_1-=contador_moeda_quantidade_1
+
         else:
                     valor = 6
                     troco = pagamento - valor
@@ -8449,8 +8478,6 @@ while usuario != "0":
                                                             if troco%0.05 !=0:
                                                                 print("Não há troco suficiente na máquina. devolver dinheiro") 
 
-                    print ("05=",moeda_quantidade_005, "010=",moeda_quantidade_10,"025=", moeda_quantidade_25, "050=",moeda_quantidade_50,"1=", moeda_quantidade_1,"2=", cedula_quantidade_2,"5=", cedula_quantidade_5,"10=", cedula_quantidade_10,"20=", cedula_quantidade_20
-                ,"50=",cedula_quantidade_50)
                     print("Liberar bebida")
                     quantidade_coca=quantidade_coca-1
     else:
