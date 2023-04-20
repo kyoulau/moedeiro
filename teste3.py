@@ -91,6 +91,7 @@ while usuario != "0":
                 elif cedulas == 5:
                     cedula_quantidade_50 = cedula_quantidade_50 + 1
                     pagamento = pagamento + 50
+                    
                 elif cedulas == 6:
                     break
                 else:
